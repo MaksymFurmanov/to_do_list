@@ -1,38 +1,318 @@
-.App {
-  text-align: center;
+/* General */
+:root {
+    font-size: 14px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    background-color: #1E1D1D;
+    color: #EFEFEF;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+::-webkit-scrollbar {
+    display: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+svg {
+    height: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.cover {
+    width: 100dvw;
+    height: 100dvh;
+    background-color: rgba(146, 138, 138, 0.55);
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Typography */
+h1 {
+    font-weight: 500;
+}
+
+h2,
+.Project > input.editing {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+h3,
+.list-settings input.editing {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Navigation and headers */
+.MobileHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #686868;
+    padding: 0 2em;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.MobileHeader svg {
+    width: 2em;
+    cursor: pointer;
+}
+
+.NavDrawer {
+    z-index: 6;
+    background-color: #686868;
+    position: absolute;
+    top: 0;
+    min-height: 100dvh;
+    color: #EFEFEF;
+    text-align: center;
+    width: 14rem;
+}
+
+.NavDrawer h1 {
+    margin-bottom: 2em;
+}
+
+.nav-item {
+    cursor: pointer;
+    margin-bottom: 1.5em;
+    width: 14rem;
+}
+
+.nav-item p {
+    margin: 0 1em;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-item p:hover {
+    color: #7921a2;
+}
+
+.Transition {
+    width: 2em;
+}
+
+.selected-project {
+    background-color: #1E1D1D;
+    border-radius: 20px;
+    padding: 1em 0;
+}
+
+/* Project components styles */
+.Project {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.lists {
+    overflow: scroll;
+    display: flex;
+}
+
+.Project {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.50));
+}
+
+/* List components styles */
+.List,
+.NewList {
+    background-color: #151313;
+    border-radius: 10px;
+    padding: 0 1em;
+    margin-right: 1em;
+    min-height: 65dvh;
+}
+
+.List {
+    border: 1px solid #EFEFEF;
+}
+
+.List:first-child {
+    margin-left: 1em;
+}
+
+.list-settings {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-settings svg {
+    width: 1.2em;
+    cursor: pointer;
+}
+
+.list-settings div:first-child {
+    display: flex;
+    gap: 1em;
+}
+
+.list-settings div:first-child svg {
+    width: 1em;
+}
+
+.NewList {
+    border: 1.5px dashed #EFEFEF;
+    width: 10em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8.5em;
+}
+
+.NewList svg {
+    color: #EFEFEF;
+    cursor: pointer;
+    width: 3em;
+}
+
+/* Task components styles */
+.Task,
+.NewTask {
+    background-color: #D9D9D9;
+    color: black;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7em;
+    margin-bottom: 1em;
+    position: relative;
+    font-size: 0.8rem;
+}
+
+.Task p,
+.Task .editing,
+.NewTask p,
+.NewTask input {
+    margin: 0;
+    flex: 1;
+}
+
+.Task .editing,
+.NewTask input {
+    font-size: 1em;
+}
+
+.Task > div,
+.NewTask > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+    width: max-content;
+}
+
+.task-actions p {
+    font-size: 0.7rem;
+}
+
+.task-actions p,
+.task-actions svg,
+.checkbox {
+    cursor: pointer;
+}
+
+.checkbox {
+    width: 1.6em;
+    color: #A7A4A4;
+}
+
+.completed {
+    color: #594F4F;
+    text-decoration: line-through;
+}
+
+.checkbox.completed {
+    color: #465CCF;
+}
+
+.task-actions input {
+    font-size: 0.6rem;
+    width: 5em;
+    white-space: nowrap;
+}
+
+.task-actions svg {
+    width: 1.3em;
+}
+
+.task-actions button,
+.NewList button{
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.date-picker-container {
+    height: 1em;
+}
+
+.date-picker {
+    display: none;
+}
+
+.priority-selector {
+    position: relative;
+    display: inline-block;
+}
+
+.priorities {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    background-color: #FFFFFF;
+    padding: 0.5em;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.priorities > * {
+    margin: 0 0.5em;
+    cursor: pointer;
+}
+
+.NewTask input {
+    margin-left: 2em;
+}
+
+/* Project, List, Task components common styles */
+.Project h2,
+.List h3,
+.Project > input,
+.list-settings input.editing{
+    margin: 1.5em 0 1.5em 1.5em;
+}
+
+.editing,
+.NewTask input {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    outline: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    resize: none;
+}
+
+@media (min-width: 768px) {
+    :root {
+        font-size: 16px;
+    }
+
+    .App {
+        display: flex;
+    }
+
+    .NavDrawer {
+        position: relative;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.50);
+    }
 }
